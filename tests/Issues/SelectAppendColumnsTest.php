@@ -9,21 +9,21 @@ use Latitude\QueryBuilder\TestCase;
  */
 class SelectAppendColumnsTest extends TestCase
 {
-    public function testSelectStar(): void
+    public function testSelectStar()
     {
         $query = $this->factory->select()->from('users');
 
         $this->assertSql('SELECT * FROM users', $query);
     }
 
-    public function testSelectReplaceColumns(): void
+    public function testSelectReplaceColumns()
     {
         $query = $this->factory->select()->columns('id')->from('users');
 
         $this->assertSql('SELECT id FROM users', $query);
     }
 
-    public function testSelectAppendColumns(): void
+    public function testSelectAppendColumns()
     {
         $query = $this->factory->select()->addColumns('id', 'username')->from('users');
 

@@ -9,7 +9,7 @@ use function Latitude\QueryBuilder\identify;
 
 class IdentifierTest extends TestCase
 {
-    public function testIdentity(): void
+    public function testIdentity()
     {
         $field = identify('id');
 
@@ -17,7 +17,7 @@ class IdentifierTest extends TestCase
         $this->assertParams([], $field);
     }
 
-    public function testAlias(): void
+    public function testAlias()
     {
         $alias = alias('users', 'u');
 
@@ -25,7 +25,7 @@ class IdentifierTest extends TestCase
         $this->assertParams([], $alias);
     }
 
-    public function testQualified(): void
+    public function testQualified()
     {
         $field = identify('public.users.username');
 
@@ -33,7 +33,7 @@ class IdentifierTest extends TestCase
         $this->assertParams([], $field);
     }
 
-    public function testQualifiedAlias(): void
+    public function testQualifiedAlias()
     {
         $alias = alias('u.id', 'user_id');
 

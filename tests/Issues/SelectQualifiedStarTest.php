@@ -10,7 +10,7 @@ class SelectQualifiedStarTest extends TestCase
 {
     use MySqlEngineSetup;
 
-    public function testSelectQualifiedStar(): void
+    public function testSelectQualifiedStar()
     {
         $query = $this->factory->select('a.*', 'b.id', 'b.name')->from('tests');
 

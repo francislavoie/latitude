@@ -9,19 +9,19 @@ use function Latitude\QueryBuilder\search;
 
 class SqlServerTest extends TestCase
 {
-    protected function setUp(): void
+    protected function setUp()
     {
         $this->engine = new SqlServerEngine();
     }
 
-    public function testIdentifier(): void
+    public function testIdentifier()
     {
         $field = identify('id');
 
         $this->assertSql('[id]', $field);
     }
 
-    public function testLike(): void
+    public function testLike()
     {
         $expr = search('username')->contains('[a-z]');
 

@@ -12,7 +12,7 @@ use function Latitude\QueryBuilder\param;
  */
 class ParamsInsideFunctionsTest extends TestCase
 {
-    public function testFuncColumns(): void
+    public function testFuncColumns()
     {
         $expr = func('COUNT', 'id');
 
@@ -21,7 +21,7 @@ class ParamsInsideFunctionsTest extends TestCase
 
     }
 
-    public function testFuncParams(): void
+    public function testFuncParams()
     {
         $expr = func('POINT', param(1), param(2));
 

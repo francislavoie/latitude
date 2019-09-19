@@ -9,21 +9,21 @@ use Latitude\QueryBuilder\TestCase;
  */
 class SelectAppendTablesTest extends TestCase
 {
-    public function testSelectTable(): void
+    public function testSelectTable()
     {
         $query = $this->factory->select()->from('users');
 
         $this->assertSql('SELECT * FROM users', $query);
     }
 
-    public function testSelectReplaceTables(): void
+    public function testSelectReplaceTables()
     {
         $query = $this->factory->select()->from('users')->from('posts');
 
         $this->assertSql('SELECT * FROM posts', $query);
     }
 
-    public function testSelectAppendTables(): void
+    public function testSelectAppendTables()
     {
         $query = $this->factory->select()->from('users')->addFrom('posts');
 

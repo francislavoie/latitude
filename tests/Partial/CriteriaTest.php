@@ -9,7 +9,7 @@ use function Latitude\QueryBuilder\group;
 
 class CriteriaTest extends TestCase
 {
-    public function testBetween(): void
+    public function testBetween()
     {
         $expr = field('created_at')->between('2018-01-01', '2018-02-01');
 
@@ -22,7 +22,7 @@ class CriteriaTest extends TestCase
         $this->assertParams(['2018-02-01', '2018-03-01'], $expr);
     }
 
-    public function testIn(): void
+    public function testIn()
     {
         $expr = field('country')->in('CN', 'JP');
 
@@ -35,7 +35,7 @@ class CriteriaTest extends TestCase
         $this->assertParams(['CA', 'US', 'MX'], $expr);
     }
 
-    public function testInQuery(): void
+    public function testInQuery()
     {
         $expr = field('country')->in(
             $this->factory->selectDistinct('country')->from('users')
@@ -45,7 +45,7 @@ class CriteriaTest extends TestCase
         $this->assertParams([], $expr);
     }
 
-    public function testEquals(): void
+    public function testEquals()
     {
         $expr = field('id')->eq(11);
 
@@ -58,7 +58,7 @@ class CriteriaTest extends TestCase
         $this->assertParams([42], $expr);
     }
 
-    public function testGreaterThan(): void
+    public function testGreaterThan()
     {
         $expr = field('age')->gt(65);
 
@@ -71,7 +71,7 @@ class CriteriaTest extends TestCase
         $this->assertParams([18], $expr);
     }
 
-    public function testLessThan(): void
+    public function testLessThan()
     {
         $expr = field('age')->lt(21);
 
@@ -84,7 +84,7 @@ class CriteriaTest extends TestCase
         $this->assertParams([30], $expr);
     }
 
-    public function testNull(): void
+    public function testNull()
     {
         $expr = field('deleted_at')->isNull();
 
@@ -97,7 +97,7 @@ class CriteriaTest extends TestCase
         $this->assertParams([], $expr);
     }
 
-    public function testBoolean(): void
+    public function testBoolean()
     {
         $expr = field('is_active')->eq(true);
 
@@ -108,7 +108,7 @@ class CriteriaTest extends TestCase
         $this->assertSql('is_active = false', $expr);
     }
 
-    public function testAnd(): void
+    public function testAnd()
     {
         $expr = field('id')->eq(5);
         $expr = $expr->and(field('is_active')->eq(1));
@@ -116,7 +116,7 @@ class CriteriaTest extends TestCase
         $this->assertSql('id = ? AND is_active = ?', $expr);
     }
 
-    public function testOr(): void
+    public function testOr()
     {
         $expr = field('is_deleted')->eq(1);
         $expr = $expr->or(field('is_inactive')->eq(1));
@@ -124,7 +124,7 @@ class CriteriaTest extends TestCase
         $this->assertSql('is_deleted = ? OR is_inactive = ?', $expr);
     }
 
-    public function testGroup(): void
+    public function testGroup()
     {
         $expr = group(
             field('username')->eq('jane')

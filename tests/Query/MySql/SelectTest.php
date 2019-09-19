@@ -8,7 +8,7 @@ class SelectTest extends TestCase
 {
     use MySqlEngineSetup;
 
-    public function testCalcFoundRows(): void
+    public function testCalcFoundRows()
     {
         $select = $this->factory
             ->select()
